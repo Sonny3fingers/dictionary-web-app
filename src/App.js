@@ -4,7 +4,7 @@ import WordDetails from "./components/WordDetails";
 
 function App() {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center px-4 py-6">
       <Header />
       <WordForm />
       <WordDetails />

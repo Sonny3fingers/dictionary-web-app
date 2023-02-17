@@ -10,8 +10,6 @@ function App() {
     setWordInfo(...data);
   };
 
-  console.log(wordInfo);
-
   return (
     <div className="flex flex-col justify-center items-center px-4 py-6 box-border">
       <Header />

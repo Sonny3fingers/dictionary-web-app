@@ -14,11 +14,15 @@ function WordForm({ getWordInfoHandler }) {
     },
   });
   const onSubmit = async (data) => {
-    const response = await fetch(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`
-    );
-    const dataResponse = await response.json();
-    getWordInfoHandler(dataResponse);
+    try {
+      const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`
+      );
+      const dataResponse = await response.json();
+      getWordInfoHandler(dataResponse);
+    } catch (error) {
+      console.log("there is not searched word");
+    }
   };
 
   return (

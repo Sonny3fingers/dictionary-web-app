@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-function WordForm() {
+function WordForm({ getWordInfoHandler }) {
   const {
     register,
     handleSubmit,
@@ -13,36 +13,43 @@ function WordForm() {
       word: "",
     },
   });
-  const onSubmit = (data) => console.log(data);
-
-  console.log(errors);
+  const onSubmit = async (data) => {
+    const response = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`
+    );
+    const dataResponse = await response.json();
+    getWordInfoHandler(dataResponse);
+  };
 
   return (
     <div className="w-full py-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex bg-gray-100 px-4 py-1 mx-2 rounded-2xl"
+        className={
+          errors.word
+            ? "flex bg-gray-100 px-4 py-1 mx-2 rounded-2xl border-2 border-red-400 transition-all"
+            : "flex bg-gray-100 px-4 py-1 mx-2 rounded-2xl transition-all "
+        }
       >
         <input
-          className="flex-1 bg-inherit p-2 border-0 outline-none font-extrabold font-serif text-base text-neutral-700"
+          className="flex-1 bg-inherit p-2 border-0 outline-none font-extrabold font-serif text-base text-neutral-700 focus:bg-transparent"
           type="text"
+          autoComplete="off"
           {...register("word", {
             required: "This is required",
             pattern: {
               value: /^[A-Za-z-]+$/i,
-              message: "Searched word can not contain space or numbers",
+              message: "Please search for only one word at time.",
             },
           })}
-          placeholder="Enter word"
+          placeholder="Enter one word"
         />
-        {/* <input type="submit"></input> */}
         <button type="submit" className="px-1">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
-            className="text-xl text-purple-500 transition-all hover:text-blue-500"
+            className="text-xl text-purple-500 transition-all duration-300 hover:text-purple-400"
           />
         </button>
-        {errors.word && <p>{errors.word?.message}</p>}
       </form>
     </div>
   );

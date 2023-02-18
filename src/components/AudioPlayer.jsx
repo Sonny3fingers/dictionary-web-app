@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
-function AudioPlayer({ wordInfo }) {
+function AudioPlayer({ audioSrc }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -16,14 +16,14 @@ function AudioPlayer({ wordInfo }) {
     setIsPlaying(false);
   };
 
-  if (!wordInfo.phonetics) {
+  if (!audioSrc) {
     return;
   }
   return (
     <div>
       <audio
         ref={audioRef}
-        src={wordInfo.phonetics[0].audio}
+        src={audioSrc}
         controls={false}
         autoPlay={isPlaying}
         onPlay={playHandler}

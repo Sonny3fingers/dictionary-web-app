@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+import { ColorRing } from "react-loader-spinner";
 
 function WordForm({ getWordInfoHandler }) {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -14,6 +17,7 @@ function WordForm({ getWordInfoHandler }) {
     },
   });
   const onSubmit = async (data) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`
@@ -22,8 +26,19 @@ function WordForm({ getWordInfoHandler }) {
       getWordInfoHandler(dataResponse);
     } catch (error) {
       console.log("there is not searched word");
+      toast.error("There is no data!");
     }
+    setIsLoading(false);
   };
+
+  if (isLoading) {
+    return (
+      <ColorRing
+        className="p-5 transition duration-300 animate-fadeIn"
+        colors={["#e9d5ff", "#a855f7", "#c084fc", "#e9d5ff", "#a855f7"]}
+      />
+    );
+  }
 
   return (
     <div className="w-full py-4">

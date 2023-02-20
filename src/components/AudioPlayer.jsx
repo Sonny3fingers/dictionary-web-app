@@ -20,7 +20,7 @@ function AudioPlayer({ audioSrc }) {
     return;
   }
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <audio
         ref={audioRef}
         src={audioSrc}

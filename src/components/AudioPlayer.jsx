@@ -30,12 +30,12 @@ function AudioPlayer({ audioSrc }) {
         onPause={pauseHandler}
       ></audio>
       <button
-        className="w-12 h-12 rounded-full bg-purple-300 transition duration-300 hover:bg-purple-200"
+        className="flex justify-center items-center w-12 h-12 rounded-full bg-purple-300 transition duration-300 hover:bg-purple-200 md:w-16 md:h-16"
         onClick={isPlaying ? pauseHandler : playHandler}
       >
         <FontAwesomeIcon
           icon={isPlaying ? faPause : faPlay}
-          className="text-purple-500"
+          className="text-purple-500 md:text-2xl"
         />
       </button>
     </div>

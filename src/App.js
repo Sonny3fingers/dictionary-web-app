@@ -30,7 +30,7 @@ function App() {
   }, [wordInfo]);
 
   return (
-    <div className="flex flex-col justify-center items-center px-5 py-6 box-border">
+    <div className="flex flex-col justify-center items-center px-5 pt-6 pb-14 box-border md:px-10 md:pt-14 lg:max-w-screen-lg lg:m-auto">
       <Header />
       <WordForm getWordInfoHandler={getWordInfoHandler} />
       <WordDetails wordInfo={wordInfo} audioSrc={audioSrc} />

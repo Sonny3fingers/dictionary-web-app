@@ -25,8 +25,7 @@ function WordForm({ getWordInfoHandler }) {
       const dataResponse = await response.json();
       getWordInfoHandler(dataResponse);
     } catch (error) {
-      console.log("there is not searched word");
-      toast.error("There is no data!");
+      toast.error("Searched word is not found!");
     }
     setIsLoading(false);
   };
@@ -41,7 +40,7 @@ function WordForm({ getWordInfoHandler }) {
   }
 
   return (
-    <div className="w-full py-4">
+    <div className="w-full py-4 md:py-14">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={
@@ -51,7 +50,7 @@ function WordForm({ getWordInfoHandler }) {
         }
       >
         <input
-          className="flex-1 bg-inherit p-2 border-0 outline-none font-extrabold font-serif text-base text-neutral-700 focus:bg-transparent"
+          className="flex-1 bg-inherit p-2 border-0 outline-none font-extrabold font-serif text-base text-neutral-700 focus:bg-transparent md:text-2xl md:py-4"
           type="text"
           autoComplete="off"
           {...register("word", {
@@ -66,7 +65,7 @@ function WordForm({ getWordInfoHandler }) {
         <button type="submit" className="px-1">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
-            className="text-xl text-purple-500 transition-all duration-300 hover:text-purple-400"
+            className="text-xl text-purple-500 transition-all duration-300 hover:text-purple-400 md:text-2xl"
           />
         </button>
       </form>

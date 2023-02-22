@@ -25,7 +25,7 @@ function WordForm({ getWordInfoHandler }) {
       const dataResponse = await response.json();
       getWordInfoHandler(dataResponse);
     } catch (error) {
-      toast.error("Searched word is not found!");
+      toast.error("Searched word has not been found!");
     }
     setIsLoading(false);
   };
@@ -45,12 +45,12 @@ function WordForm({ getWordInfoHandler }) {
         onSubmit={handleSubmit(onSubmit)}
         className={
           errors.word
-            ? "flex bg-gray-100 px-4 py-1 mx-2 rounded-2xl border-2 border-red-400 transition-all"
-            : "flex bg-gray-100 px-4 py-1 mx-2 rounded-2xl transition-all "
+            ? "flex bg-gray-100 dark:bg-gray-700  px-4 py-1 mx-2 rounded-2xl border-2 border-red-400 transition ease-out"
+            : "flex bg-gray-100 dark:bg-gray-700  px-4 py-1 mx-2 rounded-2xl transition-all "
         }
       >
         <input
-          className="flex-1 bg-inherit p-2 border-0 outline-none font-extrabold font-serif text-base text-neutral-700 focus:bg-transparent md:text-2xl md:py-4"
+          className="flex-1 bg-inherit p-2 border-0 outline-none font-extrabold font-serif text-base text-neutral-700 focus:bg-transparent dark:bg-gray-700 dark:text-neutral-50 md:text-2xl md:py-4"
           type="text"
           autoComplete="off"
           {...register("word", {
@@ -60,7 +60,7 @@ function WordForm({ getWordInfoHandler }) {
               message: "Please search for only one word at time.",
             },
           })}
-          placeholder="Enter one word"
+          placeholder="Enter word"
         />
         <button type="submit" className="px-1">
           <FontAwesomeIcon

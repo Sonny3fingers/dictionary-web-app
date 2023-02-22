@@ -21,16 +21,16 @@ function WordDetails({ wordInfo, audioSrc }) {
       <Meanings wordInfo={wordInfo} />
       {Object.keys(wordInfo).length !== 0 && (
         <div className="border-t-2 mt-4 py-3">
-          <span className="block text-base text-gray-500 py-2 md:text-xl">
+          <span className="block text-base text-gray-500 dark:text-gray-100 py-2 md:text-xl">
             Source
           </span>
           <a
             href={wordInfo.sourceUrls[0]}
-            className="underline mr-2 font-semibold text-sm transition-all duration-300 hover:text-neutral-500 md:text-base"
+            className="underline mr-2 font-semibold text-sm transition-all duration-300 hover:text-neutral-500 dark:hover:text-neutral-300 md:text-base"
           >
             {wordInfo.sourceUrls[0]}
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" />
           </a>
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </div>
       )}
     </div>

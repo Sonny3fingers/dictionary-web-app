@@ -8,6 +8,16 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [wordInfo, setWordInfo] = useState({});
   const [audioSrc, setAudioSrc] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
+  const [selectedFontFamily, setSelectedFontFamily] = useState("serif");
+
+  const selectFontFamilyHandler = (font) => {
+    setSelectedFontFamily(font);
+  };
+
+  const darkModeHandler = () => {
+    setDarkMode((prevState) => !prevState);
+  };
 
   const getWordInfoHandler = (data) => {
     setWordInfo(...data);
@@ -30,11 +40,25 @@ function App() {
   }, [wordInfo]);
 
   return (
-    <div className="flex flex-col justify-center items-center px-5 pt-6 pb-14 box-border md:px-10 md:pt-14 lg:max-w-screen-lg lg:m-auto">
-      <Header />
-      <WordForm getWordInfoHandler={getWordInfoHandler} />
-      <WordDetails wordInfo={wordInfo} audioSrc={audioSrc} />
-      <ToastContainer autoClose={3000} />
+    <div
+      className={`${
+        darkMode ? "dark" : ""
+      } font-${selectedFontFamily} min-h-screen`}
+    >
+      <div
+        className={`flex flex-col justify-center items-center px-5 pt-6 pb-14 box-border md:px-10 md:pt-14 lg:max-w-screen-lg lg:m-auto  ${
+          darkMode ? "dark" : ""
+        }`}
+      >
+        <Header
+          darkMode={darkMode}
+          darkModeHandler={darkModeHandler}
+          selectFontFamilyHandler={selectFontFamilyHandler}
+        />
+        <WordForm getWordInfoHandler={getWordInfoHandler} />
+        <WordDetails wordInfo={wordInfo} audioSrc={audioSrc} />
+        <ToastContainer autoClose={3000} />
+      </div>
     </div>
   );
 }

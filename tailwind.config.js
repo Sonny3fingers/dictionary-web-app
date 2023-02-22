@@ -3,6 +3,10 @@ module.exports = {
 
   theme: {
     extend: {
+      // fontFamily: {
+      //   sans: "Open Sans",
+      //   mono: "ui-monospace",
+      // },
       animation: {
         fadeIn: "fadeIn 0.75s linear",
       },
@@ -25,4 +29,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: "class",
 };

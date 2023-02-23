@@ -5,8 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 function WordDetails({ wordInfo, audioSrc }) {
+  if (Object.keys(wordInfo).length === 0) {
+    return;
+  }
   return (
-    <div className="w-full py-2">
+    <div
+      className="w-full py-2 animate-fade-in-down"
+      key={crypto.randomUUID().toString()}
+    >
       <div className="flex justify-between pb-6">
         <div>
           <h2 className="text-3xl font-bold mb-2 capitalize md:text-6xl">
@@ -26,7 +32,7 @@ function WordDetails({ wordInfo, audioSrc }) {
           </span>
           <a
             href={wordInfo.sourceUrls[0]}
-            className="underline mr-2 font-semibold text-sm transition-all duration-300 hover:text-neutral-500 dark:hover:text-neutral-300 md:text-base"
+            className="underline mr-2 font-semibold text-xs transition-all duration-300 hover:text-neutral-500 dark:hover:text-neutral-300 md:text-base"
           >
             {wordInfo.sourceUrls[0]}
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" />

@@ -43,7 +43,7 @@ function App() {
     <div
       className={`${
         darkMode ? "dark" : ""
-      } font-${selectedFontFamily} min-h-screen`}
+      } font-${selectedFontFamily} min-h-screen animate-fadeIn`}
     >
       <div
         className={`flex flex-col justify-center items-center px-5 pt-6 pb-14 box-border md:px-10 md:pt-14 lg:max-w-screen-lg lg:m-auto  ${

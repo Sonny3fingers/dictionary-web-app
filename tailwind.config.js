@@ -3,12 +3,9 @@ module.exports = {
 
   theme: {
     extend: {
-      // fontFamily: {
-      //   sans: "Open Sans",
-      //   mono: "ui-monospace",
-      // },
       animation: {
         fadeIn: "fadeIn 0.75s linear",
+        "fade-in-down": "fade-in-down 0.5s ease-out",
       },
       keyframes: {
         fadeIn: {
@@ -23,6 +20,16 @@ module.exports = {
           "100%": {
             opacity: 1,
             transform: "scale(1)",
+          },
+        },
+        "fade-in-down": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-30px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
           },
         },
       },

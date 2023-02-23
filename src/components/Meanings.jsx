@@ -9,7 +9,7 @@ function Meanings({ wordInfo }) {
   return (
     <>
       {meanings.map((item) => (
-        <Meaning item={item} />
+        <Meaning item={item} key={crypto.randomUUID().toString()} />
       ))}
     </>
   );

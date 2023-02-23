@@ -12,7 +12,10 @@ function Meaning({ item }) {
       <div className="ml-3 md:ml-8 md:mb-6">
         <ul className="list-disc ml-2">
           {item.definitions.map((definition) => (
-            <li className="pb-3 font-medium text-base text-neutral-500 dark:text-neutral-50 md:text-lg">
+            <li
+              key={crypto.randomUUID().toString()}
+              className="pb-3 font-medium text-base text-neutral-500 dark:text-neutral-50 md:text-lg"
+            >
               {definition.definition}
             </li>
           ))}
@@ -25,7 +28,10 @@ function Meaning({ item }) {
           </span>
           <ul className="flex flex-1 flex-wrap">
             {item.synonyms.map((synonym) => (
-              <li className="text-purple-500 pr-1">
+              <li
+                key={crypto.randomUUID().toString()}
+                className="text-purple-500 pr-1"
+              >
                 {synonym}
                 {item.synonyms[item.synonyms.length - 1] !== synonym ? "," : ""}
               </li>

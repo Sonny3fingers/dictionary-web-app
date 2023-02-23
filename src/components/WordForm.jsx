@@ -54,7 +54,7 @@ function WordForm({ getWordInfoHandler }) {
           type="text"
           autoComplete="off"
           {...register("word", {
-            required: "This is required",
+            // required: "This is required",
             pattern: {
               value: /^[A-Za-z-]+$/i,
               message: "Please search for only one word at time.",

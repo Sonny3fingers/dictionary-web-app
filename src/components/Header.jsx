@@ -5,14 +5,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 import { faSun } from "@fortawesome/free-regular-svg-icons";
 
-function Header({ darkMode, darkModeHandler, selectFontFamilyHandler }) {
+function Header({
+  darkMode,
+  darkModeHandler,
+  selectFontFamilyHandler,
+  restartWordInfoHandler,
+}) {
   const changeFontStyle = (e) => {
     selectFontFamilyHandler(e.target.value);
   };
 
   return (
     <div className="w-full flex items-center justify-between">
-      <div className="w-10 h-10 md:w-16 md:h-16 hover:cursor-pointer">
+      <div
+        className="w-10 h-10 md:w-16 md:h-16 hover:cursor-pointer"
+        onClick={restartWordInfoHandler}
+      >
         <img
           src={darkMode ? DarkModeLogo : logoIcon}
           alt="logo"

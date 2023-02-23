@@ -23,6 +23,10 @@ function App() {
     setWordInfo(...data);
   };
 
+  const restartWordInfoHandler = () => {
+    setWordInfo({});
+  };
+
   useEffect(() => {
     if ("phonetics" in wordInfo) {
       if (wordInfo.phonetics.length !== 0) {
@@ -54,6 +58,7 @@ function App() {
           darkMode={darkMode}
           darkModeHandler={darkModeHandler}
           selectFontFamilyHandler={selectFontFamilyHandler}
+          restartWordInfoHandler={restartWordInfoHandler}
         />
         <WordForm getWordInfoHandler={getWordInfoHandler} />
         <WordDetails wordInfo={wordInfo} audioSrc={audioSrc} />

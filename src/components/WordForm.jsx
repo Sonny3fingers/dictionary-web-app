@@ -17,6 +17,10 @@ function WordForm({ getWordInfoHandler }) {
     },
   });
   const onSubmit = async (data) => {
+    if (data.word === "") {
+      toast.error("Please enter searched word");
+      return;
+    }
     setIsLoading(true);
     try {
       const response = await fetch(
